@@ -1,5 +1,7 @@
 FROM node:20-alpine
 
+ARG VITE_API_URL = null
+
 WORKDIR /usr/src/app
 
 COPY package*.json /usr/src/app/
