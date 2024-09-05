@@ -1,15 +1,23 @@
-FROM node:18-alpine
+FROM node:14-alpine
 
-WORKDIR /app
+WORKDIR /usr/src/app
 
-COPY package.json .
+COPY package*.json /usr/src/app
 
 RUN npm install
 
-COPY . .
+COPY . /usr/src/app
 
-RUN npm run build
+CMD ["npm", "run dev"]
 
-EXPOSE 8080
+FROM nginx:alpine
 
-CMD [ "npm", "run", "preview" ]
+# Copy your custom Nginx configuration file to the container
+COPY .nginx/default.conf /etc/nginx/conf.d/default.conf
+
+# Expose the port that Nginx will listen on
+EXPOSE 80
+
+ENTRYPOINT [ "/docker-entrypoint.sh" ]
+
+CMD [ "nginx", "-g", "daemon off;" ]
