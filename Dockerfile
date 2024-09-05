@@ -18,6 +18,4 @@ COPY .nginx/default.conf /etc/nginx/conf.d/default.conf
 # Expose the port that Nginx will listen on
 EXPOSE 80
 
-ENTRYPOINT [ "/docker-entrypoint.sh" ]
-
 CMD [ "nginx", "-g", "daemon off;" ]
