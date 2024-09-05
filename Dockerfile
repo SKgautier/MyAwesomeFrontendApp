@@ -1,6 +1,6 @@
 FROM node:20-alpine
 
-ARG VITE_API_URL = null
+ARG VITE_API_URL
 
 WORKDIR /usr/src/app
 
