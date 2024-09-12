@@ -1,35 +1,19 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { Grid2} from '@mui/material'
 import './App.css'
+import SignInComponent from './components/auth/signin'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <h1>My Backend API url is: {import.meta.env.VITE_API_URL}</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Made By Stephane Gautier
-      </p>
-    </>
+    <Router>
+        <Grid2 container minHeight={400} columns={1}>
+          <Grid2 size={6}>
+          <SignInComponent />
+        </Grid2>
+      </Grid2>
+      <AppRoutes/>
+    </Router>
   )
 }
 
